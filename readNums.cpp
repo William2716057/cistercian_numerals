@@ -54,6 +54,24 @@ const std::unordered_map<std::string, int> cistercian = {
 };
 
 int main() {
+
+	int digit;
+
 	auto it = cistercian.find(glyph("   _ ", "  |_|", "  |  ", "  |  ", "     "));
 	if (it != cistercian.end()) std::cout << it->second << "\n";
+
+	std::cout << "Enter digit: ";
+	std::cin >> digit;
+
+	bool found = false;
+	for (const auto& [glyphStr, number] : cistercian) {
+		if (number == digit) {
+			std::cout << glyphStr << "\n";
+			found = true;
+			break;
+		}
+	}
+
+	if (!found) std::cout << "Not in table" << digit << "\n";
+
 }
